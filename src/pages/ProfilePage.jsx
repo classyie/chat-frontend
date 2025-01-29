@@ -6,7 +6,7 @@ const ProfilePage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-    if(!file) return;
+    if (!file) return;
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = async () => {
@@ -27,7 +27,7 @@ const ProfilePage = () => {
           <div className="flex flex-col items-center gap-4">
             <div className="relative">
               <img
-                src={selectedImage || authUser.profilePic || "/avatar.png"}
+                src={selectedImage || authUser.profilePicture || "/avatar.png"}
                 alt="Profile"
                 className="size-32 rounded-full object-cover border-4"
               />
@@ -76,13 +76,13 @@ const ProfilePage = () => {
             <h2 className="text-lg font-medium mb-4">Account Information</h2>
             <div className="space-y-3 text-sm ">
               <div className="flex items-center justify-between py-2 border-b border-zinc-700">
-<span>Member Since</span>
-<span>{authUser.createdAt?.split("T")[0]}</span>
+                <span>Member Since</span>
+                <span>{authUser.createdAt?.split("T")[0]}</span>
               </div>
-<div className="flex items-center justify-between ">
-  <span>Accounted Status</span>
-  <span className="text-green-500">Active</span>
-</div>
+              <div className="flex items-center justify-between ">
+                <span>Accounted Status</span>
+                <span className="text-green-500">Active</span>
+              </div>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ export const useAuthStore = create((set) => ({
 
     checkAuth: async () => {
         try {
-            const response = axiosInstance.get("/auth/check");
+            const response = await axiosInstance.get("/auth/check");
             set({ authUser: response.data });
         } catch (error) {
             console.error("Error in checkAuth", error);
@@ -58,5 +58,9 @@ export const useAuthStore = create((set) => ({
         } finally {
             set({ isLoggingIn: false });
         }
+    },
+    // Update Profile: Add your own logic here
+    updateProfile: async (data) => {
+
     }
 }))

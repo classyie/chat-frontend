@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { Camera, Mail } from "lucide-react";
 const ProfilePage = () => {
-  const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
+  const { authUser, isUpdatingProfile, updateProfile, checkAuth } = useAuthStore();
   const [selectedImage, setSelectedImage] = useState(null);
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -13,6 +13,7 @@ const ProfilePage = () => {
       const base64Image = reader.result;
       setSelectedImage(base64Image);
       await updateProfile({ profilePicture: base64Image });
+      await checkAuth();
     };
   };
   return (

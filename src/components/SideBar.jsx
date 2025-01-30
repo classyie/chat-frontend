@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import { useChatStore } from "../store/useChatStore";
 import SidebarSkeleton from "./SidebarSkeleton";
 import { Users } from "lucide-react";
+import { useAuthStore } from "../store/useAuthStore";
 
 const SideBar = () => {
-  const { getUser, users, selectedUser, setSelectedUser, isUsersLoading } =
+  const { getUser, users, selectedUser, setSelectedUser, isUsersLoading  } =
     useChatStore();
-  const onlineUsers = [];
+    const { onlineUsers } = useAuthStore();
+  
   useEffect(() => {
     getUser();
   }, [getUser]);
@@ -24,7 +26,7 @@ const SideBar = () => {
             const isActive = selectedUser?.id === user.id;
             return (
               <button
-                key={user.id}
+                key={user._id}
                 onClick={() => setSelectedUser(user)}
                 className={`
                     w-full p-3 flex items-center gap-3

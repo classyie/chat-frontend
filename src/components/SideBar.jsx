@@ -77,6 +77,9 @@ const SideBar = () => {
               </button>
             );
           })}
+          {filterUsers.length === 0 && (
+            <div className="text-center text-sm text-zinc-400">No online users found</div>
+          )}
         </div>
       </aside>
   );
